@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import NavbarLinks from './NavbarLinks';
+
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
 
@@ -7,9 +9,9 @@ const Navbar = () => {
     <div>
       <nav className="navbar " role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://bulma.io">
+          <Link className="navbar-item" to="/">
             <img alt="logo" src="/img/logo_Plant.png" width="30" height="50" />
-          </a>
+          </Link>
 
           <div
             onClick={() => {
@@ -32,43 +34,61 @@ const Navbar = () => {
           className={`navbar-menu ${isActive ? 'is-active' : ''}`}
         >
           <div className="navbar-start">
-            <Link to="/" className="navbar-item">
-              Home
-            </Link>
-
-            <Link to="/documentation" className="navbar-item">
+            <Link
+              onClick={() => {
+                setIsActive(!isActive);
+              }}
+              to="/documentation"
+              className="navbar-item"
+            >
               Documentation
             </Link>
 
             <div className="navbar-item has-dropdown is-hoverable">
-              <div className="navbar-link">More</div>
+              <div
+                className="navbar-link"
+                onClick={() => {
+                  setIsActive(!isActive);
+                }}
+              >
+                More
+              </div>
 
               <div className="navbar-dropdown">
-                <Link to="/about" className="navbar-item">
+                <Link
+                  onClick={() => {
+                    setIsActive(!isActive);
+                  }}
+                  to="/about"
+                  className="navbar-item"
+                >
                   About
                 </Link>
 
-                <Link to="/contact" className="navbar-item">
+                <Link
+                  onClick={() => {
+                    setIsActive(!isActive);
+                  }}
+                  to="/contact"
+                  className="navbar-item"
+                >
                   Contact
                 </Link>
                 <hr className="navbar-divider" />
-                <Link to="/report" className="navbar-item">
+                <Link
+                  onClick={() => {
+                    setIsActive(!isActive);
+                  }}
+                  to="/report"
+                  className="navbar-item"
+                >
                   Report an issue
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">
-                <button className="button is-primary">
-                  <strong>Sign up</strong>
-                </button>
-                <button className="button is-light">Log in</button>
-              </div>
-            </div>
-          </div>
+          <NavbarLinks setIsActive={setIsActive} isActive={isActive} />
         </div>
       </nav>
     </div>
