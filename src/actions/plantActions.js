@@ -4,6 +4,8 @@ export const ADD_PLANT = 'ADD_PLANT';
 export const ADD_PLANT_ERROR = 'ADD_PLANT_ERROR';
 export const DELETE_PLANT = 'DELETE_PLANT';
 export const DELETE_PLANT_ERROR = 'DELETE_PLANT_ERROR';
+export const MODIFY_PLANT = 'MODIFY_PLANT';
+export const MODIFY_PLANT_ERROR = 'MODIFY_PLANT_ERROR';
 export const SET_PLANTS = 'SET_PLANTS';
 
 function addPlant(plantObject) {
@@ -71,6 +73,32 @@ export function handleDeletePlant(plantId) {
       .then(() => dispatch(deletePlant(plantId)))
       .catch((err) => {
         dispatch(deletePlantError(err));
+      });
+  };
+}
+
+function modifyPlant(lastWaterOrFert, plantId) {
+  return {
+    type: MODIFY_PLANT,
+    lastWaterOrFert,
+    plantId,
+  };
+}
+
+export function handleModifyPlant(lastWaterOrFert, plantId) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+
+    db.collection('users')
+      .doc(authedUser)
+      .collection('plants')
+      .doc(plantId)
+      .update(lastWaterOrFert)
+      .then(() => {
+        dispatch(modifyPlant(lastWaterOrFert, plantId));
+      })
+      .catch((err) => {
+        console.log(err.message);
       });
   };
 }

@@ -14,6 +14,8 @@ import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import addPlant from './addPlant';
 import LoadingBar from 'react-redux-loading';
+import IdentifyPlant from './IdentifyPlant';
+import IdentifyPlantResults from './IdentifyPlantResults';
 
 class App extends React.Component {
   componentDidMount() {
@@ -31,6 +33,8 @@ class App extends React.Component {
             <Route path="/signin" component={SingIn} />
             <Route path="/garden" component={Garden} />
             <Route path="/addplant" component={addPlant} />
+            <Route path="/identifyPlant" component={IdentifyPlant} />
+            <Route path="/identifiedPlant" component={IdentifyPlantResults} />
             <Route path="/documentation" component={Documentation} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />

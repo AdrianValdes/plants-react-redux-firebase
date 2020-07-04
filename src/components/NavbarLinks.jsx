@@ -12,6 +12,16 @@ const NavbarLinks = ({ authedUser, handleSignOut, setIsActive, isActive }) => {
             onClick={() => {
               setIsActive(!isActive);
             }}
+            to="/identifyPlant"
+          >
+            Identify Plant
+          </Link>
+        </div>
+        <div className="navbar-item">
+          <Link
+            onClick={() => {
+              setIsActive(!isActive);
+            }}
             to="/garden"
           >
             Garden
