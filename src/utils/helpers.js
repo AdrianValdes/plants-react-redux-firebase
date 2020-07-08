@@ -5,10 +5,10 @@ export function generateId() {
   );
 }
 
-export const uploadPhoto = (e) => {
+export const uploadPhoto = (file) => {
   //UPLOAD PICTURE
   // Get the file
-  let file = e.target.files[0];
+  // let file = e.target.files[0];
   //Create a storage ref
   let randomPictureName = generateId();
   let storageRef = storage.ref('plants_pictures/' + randomPictureName);

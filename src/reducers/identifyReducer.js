@@ -8,7 +8,7 @@ export default function identifyReducer(state = {}, action) {
     case IDENTIFY_PLANT:
       return action.plantData;
     case IDENTIFY_PLANT_ERROR:
-      return action.err;
+      return { IdentificationError: action.err };
     default:
       return state;
   }

@@ -53,10 +53,9 @@ const GardenCard = ({
 
     const modifyWaterOrFert = { [lastWaterOrFert]: lastWater };
 
-    console.log(modifyWaterOrFert);
-
     handleModifyPlant(modifyWaterOrFert, plantId);
   };
+
   return (
     <React.Fragment key={plantId}>
       <div className="column is-4">
@@ -89,7 +88,10 @@ const GardenCard = ({
               {/*      <p>Watering Period: {waterPeriod}</p>
               <p>Fertilizing Period: {fertPeriod}</p> */}
               <p>
-                Next Watering: {timeToNextWater}
+                Next Watering:{' '}
+                {timeToNextWater === 'Invalid date'
+                  ? 'Not set'
+                  : timeToNextWater}
                 <span
                   className="icon is-small has-text-success tooltip"
                   style={{ cursor: 'pointer' }}
@@ -100,7 +102,10 @@ const GardenCard = ({
                 </span>
               </p>
               <p>
-                Next Fertilizing: {timeToNextFertilizing}{' '}
+                Next Fertilizing:{' '}
+                {timeToNextFertilizing === 'Invalid date'
+                  ? 'Not set'
+                  : timeToNextFertilizing}
                 <span
                   className="icon is-small has-text-success tooltip "
                   style={{ cursor: 'pointer' }}

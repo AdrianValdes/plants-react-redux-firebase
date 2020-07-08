@@ -42,11 +42,12 @@ export function handleIdentifyPlant(selectedPicture, organValue) {
       //let gbif = response.results[0].gbif.id;
 
       dispatch(identifyPlant(response.results[0].species));
-      
+
       dispatch(hideLoading());
     } catch (err) {
       console.log(err);
       dispatch(identifyPlantError(err.message));
+      dispatch(hideLoading());
     }
   };
 }

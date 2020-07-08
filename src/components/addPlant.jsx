@@ -27,7 +27,7 @@ function AddPlant({
     showLoading();
     setDisableFile(true);
 
-    uploadPhoto(e).then((downloadURL) => {
+    uploadPhoto(e.target.files[0]).then((downloadURL) => {
       setValues({ ...values, photoURL: downloadURL });
       hideLoading();
       setDisableFile(false);

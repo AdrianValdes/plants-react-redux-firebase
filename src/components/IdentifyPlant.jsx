@@ -6,11 +6,10 @@ import IdentifyPlantResults from './IdentifyPlantResults';
 
 const IdentifyPlant = ({ handleIdentifyAction, history, identifiedPlant }) => {
   const [plantOrgan, setPlantOrgan] = useState('leaf');
-  const [plantFile, setplantFile] = useState({});
+  const [plantFile, setPlantFile] = useState({});
 
   const handleIdentifyPlant = () => {
     handleIdentifyAction(plantFile, plantOrgan);
-    //history.push('/identifiedPlant');
   };
 
   const handleRadioChange = (e) => {
@@ -20,7 +19,7 @@ const IdentifyPlant = ({ handleIdentifyAction, history, identifiedPlant }) => {
   const handleFile = (e) => {
     const file = e.target.files[0];
     showLoading();
-    setplantFile(file);
+    setPlantFile(file);
     hideLoading();
   };
   if (identifiedPlant.scientificNameWithoutAuthor) {
@@ -28,6 +27,7 @@ const IdentifyPlant = ({ handleIdentifyAction, history, identifiedPlant }) => {
       <IdentifyPlantResults
         identifiedPlant={identifiedPlant}
         plantFile={plantFile}
+        history={history}
       />
     );
   } else {
@@ -50,7 +50,7 @@ const IdentifyPlant = ({ handleIdentifyAction, history, identifiedPlant }) => {
             </label>
           </div>
           <div className="field">
-            <div className="file is-centered is-boxed  is-success has-name">
+            <div className="file is-centered  is-small  is-success ">
               <label className="file-label">
                 <input
                   onChange={handleFile}
